@@ -16,9 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("slslslsl","hhshshshshshsh");
-        LoggerUtils.i("TAG","oncreste");
-        Logger.t("ksks").i("lslslsllslslslsls");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
