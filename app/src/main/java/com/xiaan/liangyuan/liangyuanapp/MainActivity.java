@@ -1,8 +1,11 @@
 package com.xiaan.liangyuan.liangyuanapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import com.orhanobut.logger.Logger;
+import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,12 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("slslslsl","hhshshshshshsh");
+        LoggerUtils.i("TAG","oncreste");
+        Logger.t("ksks").i("lslslsllslslslsls");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+       
     }
 
     /**
