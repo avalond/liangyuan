@@ -5,8 +5,10 @@ import android.support.multidex.MultiDexApplication;
 
 import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
 
+import io.realm.Realm;
+
 /**
- * Created by kevin on 8/16/17.
+ * Created by kevin.
  */
 
 public class LiangYuanApplication extends MultiDexApplication {
@@ -27,6 +29,8 @@ public class LiangYuanApplication extends MultiDexApplication {
         mContext = getApplicationContext();
         versionCode = 0;
         versionName = null;
+
+        Realm.init(this);
     }
 
 }
