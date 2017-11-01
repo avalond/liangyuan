@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import com.xiaan.liangyuan.liangyuanapp.utils.Constants;
@@ -54,8 +55,8 @@ public class BluetoothLyService extends Service {
 			//Gatt server connected
 			if (newState == BluetoothProfile.STATE_CONNECTED) {
 				LoggerUtils.d(TAG, "bluetooth is connected");
-				mIntentAction =Constants.ACTION_GATT_CONNECTED;
-				mConnectionState=Constants.STATE_DISCONNECTED;
+				mIntentAction = Constants.ACTION_GATT_CONNECTED;
+				mConnectionState = Constants.STATE_DISCONNECTED;
 
 			}
 		}
@@ -64,5 +65,13 @@ public class BluetoothLyService extends Service {
 
 	@Nullable @Override public IBinder onBind(Intent intent) {
 		return null;
+	}
+
+
+	//binder
+	public class LocalBinder extends Binder {
+		public BluetoothLyService getLocalBluetoothServers() {
+			return BluetoothLyService.this;
+		}
 	}
 }
