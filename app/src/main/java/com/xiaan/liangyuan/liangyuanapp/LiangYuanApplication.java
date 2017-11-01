@@ -72,7 +72,9 @@ public class LiangYuanApplication extends MultiDexApplication {
 		mContext = getApplicationContext();
 		versionCode = 0;
 		versionName = null;
+		//
 		mLiangYuanServicesList = new ArrayList<>();
+		//
 		mBluetoothGattCharacteristicsList = new ArrayList<>();
 
 		Realm.init(this);
