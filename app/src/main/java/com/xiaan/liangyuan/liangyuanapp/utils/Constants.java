@@ -28,6 +28,5 @@ public class Constants {
 	private static final int STATE_CONNECTING = 1;
 	private static final int STATE_CONNECTED = 2;
 	private static final int STATE_DISCONNECTING = 4;
-
 	
 }
