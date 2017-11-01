@@ -6,11 +6,12 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.xiaan.liangyuan.liangyuanapp"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 26
-        versionCode 1
+        versionCode getVersionCode()
         versionName "1.0"
         multiDexEnabled true
+        resConfigs "cn"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -45,15 +46,65 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    // 关闭一些用不到的东西，加速编译
+    tasks.whenTaskAdded { final task ->
+        if (task.name.contains("lint") || task.name.contains("clean") ||
+                task.name.contains("Aidl") ||
+                task.name.contains("mockableAndroidJar") ||
+                task.name.contains("UnitTest") ||
+                task.name.contains("AndroidTest")) {
+            task.enabled = false
+        }
+    }
+    lintOptions {
+        abortOnError false
+        warning 'InvalidPackage'
+        disable 'InvalidPackage'
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+
     flavorDimensions "liangyuan"
     //
-    
 
     //
     android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "${variant.name}-${variant.versionName}.apk"
+        if (!variant.buildType.debuggable) {
+            variant.outputs.all {
+                def apkName = "liangyuan-release-" + releaseBuildTime() +
+                        variant.getVersionCode() +
+                        "-v" +
+                        variant.getVersionName() +
+                        ".apk"
+                outputFileName = apkName
+            }
+        } else {
+            variant.outputs.all {
+                def apkName = "liangyuan-debug-" + releaseBuildTime() +
+                        variant.getVersionCode()+
+                        "-v" +
+                        variant.getVersionName() +
+                        ".apk"
+                outputFileName = apkName
+            }
         }
+    }
+}
+// build time
+static def releaseBuildTime() {
+    return new Date().format("yyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+// version code
+def getVersionCode = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-list', '--first-parent', '--count', 'origin/master'
+            standardOutput = stdout
+        }
+        return Integer.parseInt(stdout.toString().trim()) * 100
+    }
+    catch (ignored) {
+        return -1;
     }
 }
 
