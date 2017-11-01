@@ -77,6 +77,7 @@ public class LiangYuanApplication extends MultiDexApplication {
 		//
 		mBluetoothGattCharacteristicsList = new ArrayList<>();
 
+		// database
 		Realm.init(this);
 	}
 
