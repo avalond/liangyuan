@@ -9,11 +9,13 @@ import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
 import com.xiaan.liangyuan.liangyuanapp.utils.Constants;
 import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
+import java.util.UUID;
 
 /**
  * Service for managing connection and data communication with a GATT server
@@ -43,7 +45,6 @@ public class BluetoothLyService extends Service {
 	//Devices name
 	private static String mBluetoothDeviceName;
 	private static Context mContext;
-	
 
 
 	private static void broadcastConnectionUpdate(String action) {
@@ -78,8 +79,27 @@ public class BluetoothLyService extends Service {
 
 			} else if (status == BluetoothGatt.GATT_FAILURE) {
 				LoggerUtils.d(TAG, "BluetoothGatt onDescriptorWrite GATT_FAIL------------------->FAILURE");
-				Intent intent=new Intent(Constants.ACTION_GATT_DESCRIPTORWRITE_RESULT);
-				intent.putExtra(Constants.)
+				Intent intent = new Intent(Constants.ACTION_GATT_DESCRIPTORWRITE_RESULT);
+				intent.putExtra(Constants.ACTION_GATT_DESCRIPTORWRITE_RESULT, status);
+				LiangYuanApplication.getContext().sendBroadcast(intent);
+			}
+		}
+
+
+		@Override public void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+			super.onDescriptorRead(gatt, descriptor, status);
+			LoggerUtils.d(TAG, "BluetoothGatt onDescriptorRead GATT_SUCCESS------------------->SUCCESS");
+			if (status == BluetoothGatt.GATT_SUCCESS) {
+				UUID descriptionUUID = descriptor.getUuid();
+				Intent intent = new Intent(Constants.ACTION_DATA_AVAILABLE);
+				Bundle mBundle = new Bundle();
+				// Putting the byte value read for GATT Db
+				mBundle.putByteArray(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE, descriptor.getValue());
+				mBundle.putString(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE_UUID, descriptor.getUuid().toString());
+				mBundle.putString(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE_CHARACTERISTIC_UUID, descriptor.getCharacteristic().getUuid().toString());
+			}
+			if (){
+				
 			}
 		}
 
@@ -92,7 +112,7 @@ public class BluetoothLyService extends Service {
 			if (newState == BluetoothProfile.STATE_CONNECTED) {
 				LoggerUtils.d(TAG, "bluetooth ---------> 已经连接");
 				mIntentAction = Constants.ACTION_GATT_CONNECTED;
-				mConnectionState = Constants.STATE_DISCONNECTED;
+				mConnectionState = Constants.STATE_CONNECTED;
 				broadcastConnectionUpdate(mIntentAction);
 			} else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
 				LoggerUtils.d(TAG, "bluetooth ---------> 连接断开");
@@ -101,8 +121,8 @@ public class BluetoothLyService extends Service {
 				broadcastConnectionUpdate(mIntentAction);
 			} else if (newState == BluetoothProfile.STATE_DISCONNECTING) {
 				LoggerUtils.d(TAG, "bluetooth ---------> 正在连接");
-				// mIntentAction = Constants.ACTION_GATT_CONNECTED;
-				// mConnectionState = Constants.STATE_DISCONNECTED;
+				// mIntentAction = Constants.ACTION_GATT_DISCONNECTING;
+				// mConnectionState = Constants.STATE_CONNECTING;
 				// broadcastConnectionUpdate(mIntentAction);
 			}
 

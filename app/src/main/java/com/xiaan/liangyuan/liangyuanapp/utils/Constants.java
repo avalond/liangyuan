@@ -1,3 +1,35 @@
+/*
+ * Copyright Cypress Semiconductor Corporation, 2014-2015 All rights reserved.
+ * Copyright xiaan liangyuan , 2017  All rights reserved.
+ *
+ * This software, associated documentation and materials ("Software") is
+ * owned by Cypress Semiconductor Corporation ("Cypress") and is
+ * protected by and subject to worldwide patent protection (UnitedStates and foreign), United States copyright laws and international
+ * treaty provisions. Therefore, unless otherwise specified in a separate license agreement between you and Cypress, this Software
+ * must be treated like any other copyrighted material. Reproduction,
+ * modification, translation, compilation, or representation of this
+ * Software in any other form (e.g., paper, magnetic, optical, silicon)
+ * is prohibited without Cypress's express written permission.
+ *
+ * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY
+ * KIND, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+ * NONINFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE. Cypress reserves the right to make changes
+ * to the Software without notice. Cypress does not assume any liability
+ * arising out of the application or use of Software or any product or
+ * circuit described in the Software. Cypress does not authorize its
+ * products for use as critical components in any products where a
+ * malfunction or failure may reasonably be expected to result in
+ * significant injury or death ("High Risk Product"). By including
+ * Cypress's product in a High Risk Product, the manufacturer of such
+ * system or application assumes all risk of such use and in doing so
+ * indemnifies Cypress against all liability.
+ *
+ * Use of this Software may be limited by and subject to the applicable
+ * Cypress software license agreement.
+ *
+ *
+ */
 package com.xiaan.liangyuan.liangyuanapp.utils;
 
 /**
@@ -22,47 +54,76 @@ public class Constants {
 	public final static String ACTION_GATT_DESCRIPTORWRITE_RESULT = "com.liangyuan.bluetooth.le.ACTION_GATT_DESCRIPTORWRITE_RESULT";
 	public final static String ACTION_GATT_CHARACTERISTIC_WRITE_SUCCESS = "com.liangyuan.bluetooth.le.ACTION_GATT_CHARACTERISTIC_SUCCESS";
 
-	private final static String ACTION_GATT_DISCONNECTING = "com.liangyuan.bluetooth.le.ACTION_GATT_DISCONNECTING";
+	public final static String ACTION_GATT_DISCONNECTING = "com.liangyuan.bluetooth.le.ACTION_GATT_DISCONNECTING";
 	/**
 	 * Connection status
 	 */
 	public static final int STATE_DISCONNECTED = 0;
-	private static final int STATE_CONNECTING = 1;
-	private static final int STATE_CONNECTED = 2;
-	private static final int STATE_DISCONNECTING = 4;
+	public static final int STATE_CONNECTING = 1;
+	public static final int STATE_CONNECTED = 2;
+	public static final int STATE_DISCONNECTING = 4;
 
 	/**
 	 * Extras Constants
 	 */
-	public static final String EXTRA_HRM_EEVALUE = "com.usr.ble.backgroundservices." + "EXTRA_HRM_EEVALUE";
-	public static final String EXTRA_HRM_RRVALUE = "com.usr.ble.backgroundservices." + "EXTRA_HRM_RRVALUE";
-	public static final String EXTRA_HRM_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_HRM_VALUE";
-	public static final String EXTRA_BSL_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_BSL_VALUE";
-	public static final String EXTRA_MNS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_MNS_VALUE";
-	public static final String EXTRA_MONS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_MONS_VALUE";
-	public static final String EXTRA_SNS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_SNS_VALUE";
-	public static final String EXTRA_HRS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_HRS_VALUE";
-	public static final String EXTRA_FRS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_FRS_VALUE";
-	public static final String EXTRA_SRS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_SRS_VALUE";
-	public static final String EXTRA_PNP_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_PNP_VALUE";
-	public static final String EXTRA_SID_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_SID_VALUE";
-	public static final String EXTRA_RCDL_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_RCDL_VALUE";
-	public static final String EXTRA_HTM_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_HTM_VALUE";
-	public static final String EXTRA_HSL_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_HSL_VALUE";
-	public static final String EXTRA_BTL_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_BTL_VALUE";
-	public static final String EXTRA_CAPPROX_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_CAPPROX_VALUE";
-	public static final String EXTRA_CAPSLIDER_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_CAPSLIDER_VALUE";
-	public static final String EXTRA_CAPBUTTONS_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_CAPBUTTONS_VALUE";
+	public static final String EXTRA_HRM_EEVALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_HRM_EEVALUE";
+
+	public static final String EXTRA_HRM_RRVALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_HRM_RRVALUE";
+
+	public static final String EXTRA_HRM_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_HRM_VALUE";
+
+	public static final String EXTRA_BSL_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_BSL_VALUE";
+
+	public static final String EXTRA_MNS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_MNS_VALUE";
+
+	public static final String EXTRA_MONS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_MONS_VALUE";
+
+	public static final String EXTRA_SNS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_SNS_VALUE";
+
+	public static final String EXTRA_HRS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_HRS_VALUE";
+
+	public static final String EXTRA_FRS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_FRS_VALUE";
+
+	public static final String EXTRA_SRS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_SRS_VALUE";
+
+	public static final String EXTRA_PNP_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_PNP_VALUE";
+
+	public static final String EXTRA_SID_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_SID_VALUE";
+
+	public static final String EXTRA_RCDL_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_RCDL_VALUE";
+
+	public static final String EXTRA_HTM_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_HTM_VALUE";
+
+	public static final String EXTRA_HSL_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_HSL_VALUE";
+
+	public static final String EXTRA_BTL_VALUE = "com.xiaan.liangyuan.backgroundservices." + "¬XTRA_BTL_VALUE";
+
+	public static final String EXTRA_CAPPROX_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_CAPPROX_VALUE";
+
+	public static final String EXTRA_CAPSLIDER_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_CAPSLIDER_VALUE";
+
+	public static final String EXTRA_CAPBUTTONS_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_CAPBUTTONS_VALUE";
+
 	public static final String EXTRA_ALERT_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_ALERT_VALUE";
+
 	public static final String EXTRA_POWER_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_POWER_VALUE";
+
 	public static final String EXTRA_RGB_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_RGB_VALUE";
+
 	public static final String EXTRA_GLUCOSE_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_GLUCOSE_VALUE";
+
 	public static final String EXTRA_BYTE_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_BYTE_VALUE";
+
 	public static final String EXTRA_BYTE_UUID_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_BYTE_UUID_VALUE";
-	public static final String EXTRA_PRESURE_SYSTOLIC_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_PRESURE_SYSTOLIC_VALUE";
-	public static final String EXTRA_PRESURE_DIASTOLIC_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_PRESURE_DIASTOLIC_VALUE";
-	public static final String EXTRA_PRESURE_SYSTOLIC_UNIT_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_PRESURE_SYSTOLIC_UNIT_VALUE";
-	public static final String EXTRA_PRESURE_DIASTOLIC_UNIT_VALUE = "com.usr.ble.backgroundservices." + "EXTRA_PRESURE_DIASTOLIC_UNIT_VALUE";
+
+	public static final String EXTRA_PRESURE_SYSTOLIC_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_PRESURE_SYSTOLIC_VALUE";
+
+	public static final String EXTRA_PRESURE_DIASTOLIC_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_PRESURE_DIASTOLIC_VALUE";
+
+	public static final String EXTRA_PRESURE_SYSTOLIC_UNIT_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_PRESURE_SYSTOLIC_UNIT_VALUE";
+
+	public static final String EXTRA_PRESURE_DIASTOLIC_UNIT_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_PRESURE_DIASTOLIC_UNIT_VALUE";
+	
 	public static final String EXTRA_RSC_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_RSC_VALUE";
 	public static final String EXTRA_CSC_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_CSC_VALUE";
 	public static final String EXTRA_ACCX_VALUE = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_ACCX_VALUE";
@@ -83,19 +144,19 @@ public class Constants {
 			"EXTRA_SPRESSURE_SENSOR_TYPE_VALUE";
 	public static final String EXTRA_SPRESSURE_THRESHOLD_VALUE = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_SPRESSURE_THRESHOLD_VALUE";
-	public static final String EXTRA_DESCRIPTOR_BYTE_VALUE = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_DESCRIPTOR_BYTE_VALUE = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_DESCRIPTOR_BYTE_VALUE";
-	public static final String EXTRA_DESCRIPTOR_BYTE_VALUE_UUID = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_DESCRIPTOR_BYTE_VALUE_UUID = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_DESCRIPTOR_BYTE_VALUE_UUID";
-	public static final String EXTRA_DESCRIPTOR_BYTE_VALUE_CHARACTERISTIC_UUID = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_DESCRIPTOR_BYTE_VALUE_CHARACTERISTIC_UUID = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_DESCRIPTOR_BYTE_VALUE_CHARACTERISTIC_UUID";
-	public static final String EXTRA_DESCRIPTOR_VALUE = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_DESCRIPTOR_VALUE = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_DESCRIPTOR_VALUE";
-	public static final String EXTRA_DESCRIPTOR_REPORT_REFERENCE_ID = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_DESCRIPTOR_REPORT_REFERENCE_ID = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_DESCRIPTOR_REPORT_REFERENCE_ID";
-	public static final String EXTRA_DESCRIPTOR_REPORT_REFERENCE_TYPE = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_DESCRIPTOR_REPORT_REFERENCE_TYPE = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_DESCRIPTOR_REPORT_REFERENCE_TYPE";
-	public static final String EXTRA_CHARACTERISTIC_ERROR_MESSAGE = "com.usr.ble.backgroundservices." +
+	public static final String EXTRA_CHARACTERISTIC_ERROR_MESSAGE = "com.xiaan.liangyuan.backgroundservices." +
 			"EXTRA_CHARACTERISTIC_ERROR_MESSAGE";
 
 	/**
@@ -109,17 +170,17 @@ public class Constants {
 	 */
 	public static final String firstBitValueKey = "FIRST BIT VALUE KEY";
 	public static final String secondBitValueKey = "Second BIT VALUE KEY";
-	public static final String EXTRA_SILICON_ID = "com.usr.ble.backgroundservices." + "EXTRA_SILICON_ID";
-	public static final String EXTRA_SILICON_REV = "com.usr.ble.backgroundservices." + "EXTRA_SILICON_REV";
-	public static final String EXTRA_START_ROW = "com.usr.ble.backgroundservices." + "EXTRA_START_ROW";
-	public static final String EXTRA_END_ROW = "com.usr.ble.backgroundservices." + "EXTRA_END_ROW";
-	public static final String EXTRA_SEND_DATA_ROW_STATUS = "com.usr.ble.backgroundservices." + "EXTRA_SEND_DATA_ROW_STATUS";
-	public static final String EXTRA_PROGRAM_ROW_STATUS = "com.usr.ble.backgroundservices." + "EXTRA_PROGRAM_ROW_STATUS";
-	public static final String EXTRA_VERIFY_ROW_STATUS = "com.usr.ble.backgroundservices." + "EXTRA_VERIFY_ROW_STATUS";
-	public static final String EXTRA_VERIFY_ROW_CHECKSUM = "com.usr.ble.backgroundservices." + "EXTRA_VERIFY_ROW_CHECKSUM";
-	public static final String EXTRA_VERIFY_CHECKSUM_STATUS = "com.usr.ble.backgroundservices." + "EXTRA_VERIFY_CHECKSUM_STATUS";
-	public static final String EXTRA_VERIFY_EXIT_BOOTLOADER = "com.usr.ble.backgroundservices." + "EXTRA_VERIFY_EXIT_BOOTLOADER";
-	public static final String EXTRA_ERROR_OTA = "com.usr.ble.backgroundservices." + "EXTRA_ERROR_OTA";
+	public static final String EXTRA_SILICON_ID = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_SILICON_ID";
+	public static final String EXTRA_SILICON_REV = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_SILICON_REV";
+	public static final String EXTRA_START_ROW = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_START_ROW";
+	public static final String EXTRA_END_ROW = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_END_ROW";
+	public static final String EXTRA_SEND_DATA_ROW_STATUS = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_SEND_DATA_ROW_STATUS";
+	public static final String EXTRA_PROGRAM_ROW_STATUS = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_PROGRAM_ROW_STATUS";
+	public static final String EXTRA_VERIFY_ROW_STATUS = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_VERIFY_ROW_STATUS";
+	public static final String EXTRA_VERIFY_ROW_CHECKSUM = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_VERIFY_ROW_CHECKSUM";
+	public static final String EXTRA_VERIFY_CHECKSUM_STATUS = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_VERIFY_CHECKSUM_STATUS";
+	public static final String EXTRA_VERIFY_EXIT_BOOTLOADER = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_VERIFY_EXIT_BOOTLOADER";
+	public static final String EXTRA_ERROR_OTA = "com.xiaan.liangyuan.backgroundservices." + "EXTRA_ERROR_OTA";
 	/**
 	 * Shared Prefernce Status HandShake State
 	 */
