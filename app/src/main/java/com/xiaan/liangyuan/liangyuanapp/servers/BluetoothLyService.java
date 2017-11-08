@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
 import com.xiaan.liangyuan.liangyuanapp.utils.Constants;
 import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
+import com.xiaan.liangyuan.liangyuanapp.utils.UUIDDatabase;
 import java.util.UUID;
 
 /**
@@ -97,10 +98,11 @@ public class BluetoothLyService extends Service {
 				mBundle.putByteArray(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE, descriptor.getValue());
 				mBundle.putString(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE_UUID, descriptor.getUuid().toString());
 				mBundle.putString(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE_CHARACTERISTIC_UUID, descriptor.getCharacteristic().getUuid().toString());
+				if (descriptionUUID.equals(UUIDDatabase.UUID_CLIENT_CHARACTERISTIC_CONFIG)){
+					  String valueRecevied=
+				}
 			}
-			if (){
-				
-			}
+
 		}
 
 
