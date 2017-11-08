@@ -16,7 +16,7 @@ import java.util.List;
 public class LiangYuanApplication extends MultiDexApplication {
 	private static final String TAG = LiangYuanApplication.class.getSimpleName();
 
-	private static Context mContext;
+	public static Context mContext;
 	private String versionName;
 	private int versionCode;
 
@@ -25,7 +25,7 @@ public class LiangYuanApplication extends MultiDexApplication {
 	private BluetoothGattCharacteristic mBluetoothGattCharacteristic;
 
 
-	private static Context getContext() {
+	public static Context getContext() {
 		return mContext;
 	}
 

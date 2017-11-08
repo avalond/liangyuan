@@ -4,12 +4,14 @@ import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
 import com.xiaan.liangyuan.liangyuanapp.utils.Constants;
 import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
 
@@ -41,8 +43,14 @@ public class BluetoothLyService extends Service {
 	//Devices name
 	private static String mBluetoothDeviceName;
 	private static Context mContext;
-	//Intent action with bluetooth gatt connection state change
-	public static String mIntentAction;
+	
+
+
+	private static void broadcastConnectionUpdate(String action) {
+		Intent intent = new Intent(action);
+		LiangYuanApplication.getContext().sendBroadcast(intent);
+	}
+
 
 	/**
 	 * Implements callback methods for GATT events that the app cares about. For
@@ -50,15 +58,54 @@ public class BluetoothLyService extends Service {
 	 * 连接状态  已连接、断开等等
 	 */
 	private final static BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
+
+		@Override public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+			super.onServicesDiscovered(gatt, status);
+			//发现新的服务
+			if (status == BluetoothGatt.GATT_SUCCESS) {
+				LoggerUtils.d(TAG, "Bluetooth---------->发现服务");
+				broadcastConnectionUpdate(Constants.ACTION_GATT_SERVICES_DISCOVERED);
+			} else {
+				LoggerUtils.d(TAG, "Bluetooth---------->未发现服务");
+			}
+		}
+
+
+		@Override public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+			super.onDescriptorWrite(gatt, descriptor, status);
+			if (status == BluetoothGatt.GATT_SUCCESS) {
+				LoggerUtils.d(TAG, "BluetoothGatt onDescriptorWrite GATT_SUCCESS------------------->SUCCESS");
+
+			} else if (status == BluetoothGatt.GATT_FAILURE) {
+				LoggerUtils.d(TAG, "BluetoothGatt onDescriptorWrite GATT_FAIL------------------->FAILURE");
+				Intent intent=new Intent(Constants.ACTION_GATT_DESCRIPTORWRITE_RESULT);
+				intent.putExtra(Constants.)
+			}
+		}
+
+
 		@Override public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
 			super.onConnectionStateChange(gatt, status, newState);
+
+			String mIntentAction;
 			//Gatt server connected
 			if (newState == BluetoothProfile.STATE_CONNECTED) {
-				LoggerUtils.d(TAG, "bluetooth is connected");
+				LoggerUtils.d(TAG, "bluetooth ---------> 已经连接");
 				mIntentAction = Constants.ACTION_GATT_CONNECTED;
 				mConnectionState = Constants.STATE_DISCONNECTED;
-
+				broadcastConnectionUpdate(mIntentAction);
+			} else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+				LoggerUtils.d(TAG, "bluetooth ---------> 连接断开");
+				mIntentAction = Constants.ACTION_GATT_DISCONNECTED;
+				mConnectionState = Constants.STATE_DISCONNECTED;
+				broadcastConnectionUpdate(mIntentAction);
+			} else if (newState == BluetoothProfile.STATE_DISCONNECTING) {
+				LoggerUtils.d(TAG, "bluetooth ---------> 正在连接");
+				// mIntentAction = Constants.ACTION_GATT_CONNECTED;
+				// mConnectionState = Constants.STATE_DISCONNECTED;
+				// broadcastConnectionUpdate(mIntentAction);
 			}
+
 		}
 	};
 
