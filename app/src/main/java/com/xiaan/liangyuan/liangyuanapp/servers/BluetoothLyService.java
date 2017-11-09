@@ -100,6 +100,7 @@ public class BluetoothLyService extends Service {
 				mBundle.putString(Constants.EXTRA_DESCRIPTOR_BYTE_VALUE_CHARACTERISTIC_UUID, descriptor.getCharacteristic().getUuid().toString());
 				if (descriptionUUID.equals(UUIDDatabase.UUID_CLIENT_CHARACTERISTIC_CONFIG)){
 					  String valueRecevied=
+							  
 				}
 			}
 
