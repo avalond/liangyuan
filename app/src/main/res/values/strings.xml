@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">liangyuan</string>
+    <string name="app_name">LiangYuan</string>
+    <string name="app_name_debug">LiangYuan-Debug</string>
 </resources>

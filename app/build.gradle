@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
+final def keystorePropertiesFile = rootProject.file("keystore.properties")
+final def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
@@ -18,10 +22,36 @@ android {
                 cppFlags "-frtti -fexceptions"
             }
         }
+        signingConfigs {
+            config {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                v2SigningEnabled true
+            }
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
+            minifyEnabled true
+            multiDexEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            debuggable true
+            manifestPlaceholders = [app_name: "@string/app_name"]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+            minifyEnabled true
+            multiDexEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            debuggable true
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [app_name: "@string/app_name_debug"]
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
