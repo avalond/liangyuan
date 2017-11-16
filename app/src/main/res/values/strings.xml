@@ -1,10 +1,7 @@
 <resources>
     <string name="app_name">LiangYuan</string>
     <string name="app_name_debug">LiangYuan-Debug</string>
-    <string name="devices">BLE Devices</string>
-    <string name="menu_usr">Official Website</string>
-    <string name="share">Share</string>
-    <string name="share_title">Select app to share</string>
+    <string name="devices">亮源 BLE 设备</string>
     <string name="share_ex">Can\'t find share component to share</string>
     <string name="menu_hex_send">HEX Send</string>
     <string name="menu_asscii_send">ASSCII Send</string>
@@ -14,7 +11,7 @@
     <string name="alert">Alert</string>
     <string name="conn_disconnected">Connect disconnect,please back to reconnect</string>
     <string name="conn_disconnected_home">Connect disconnect,please reconnect</string>
-    <string name="ok">OK</string>
+    <string name="ok">好</string>
 
     <string name="connect_fail">Connection failure</string>
 

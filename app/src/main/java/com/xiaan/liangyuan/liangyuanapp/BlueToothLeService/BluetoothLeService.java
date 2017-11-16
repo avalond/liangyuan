@@ -142,7 +142,7 @@ public class BluetoothLeService extends Service {
 			String intentAction;
 			// GATT Server connected
 			if (newState == BluetoothProfile.STATE_CONNECTED) {
-				System.out.println("---------------------------->已经连接");
+				LoggerUtils.d(TAG,"---------------------------->已经连接");
 				intentAction = ACTION_GATT_CONNECTED;
 				mConnectionState = STATE_CONNECTED;
 				broadcastConnectionUpdate(intentAction);
@@ -199,7 +199,7 @@ public class BluetoothLeService extends Service {
 		public void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor,
 		                             int status) {
 
-			System.out.println("onDescriptorRead ------------------->GATT_SUCC");
+			LoggerUtils.d(TAG,"onDescriptorRead ------------------->GATT_SUCC");
 
 			if (status == BluetoothGatt.GATT_SUCCESS) {
 				UUID descriptorUUID = descriptor.getUuid();
@@ -262,7 +262,7 @@ public class BluetoothLeService extends Service {
 				 */
 				mContext.sendBroadcast(intent);
 			} else {
-				System.out.println("onDescriptorRead ------------------->GATT_FAIL");
+				LoggerUtils.d(TAG,"onDescriptorRead ------------------->GATT_FAIL");
 			}
 
 		}
@@ -273,7 +273,7 @@ public class BluetoothLeService extends Service {
 				characteristic, int status) {
 			//write操作会调用此方法
 			if (status == BluetoothGatt.GATT_SUCCESS) {
-				System.out.println("onCharacteristicWrite ------------------->write success");
+				LoggerUtils.d(TAG,"onCharacteristicWrite ------------------->write success");
 				Intent intent = new Intent(ACTION_GATT_CHARACTERISTIC_WRITE_SUCCESS);
 				mContext.sendBroadcast(intent);
 			} else {
@@ -288,7 +288,7 @@ public class BluetoothLeService extends Service {
 		public void onCharacteristicRead(BluetoothGatt gatt,
 		                                 BluetoothGattCharacteristic characteristic, int status) {
 
-			System.out.println("onCharacteristicWrite ------------------->read");
+			LoggerUtils.d(TAG,"onCharacteristicWrite ------------------->read");
 			// GATT Characteristic read (读操作会调用该方法)
 			if (status == BluetoothGatt.GATT_SUCCESS) {
 				UUID charUuid = characteristic.getUuid();
@@ -300,7 +300,7 @@ public class BluetoothLeService extends Service {
 				mBundle.putString(Constants.EXTRA_BYTE_UUID_VALUE,
 						characteristic.getUuid().toString());
 
-				System.out.println("onCharacteristicRead------------------->GATT_SUCC");
+				LoggerUtils.d(TAG,"onCharacteristicRead------------------->GATT_SUCC");
 
 				// Body sensor location read value
 				if (charUuid.equals(UUIDDatabase.UUID_BODY_SENSOR_LOCATION)) {
@@ -527,7 +527,7 @@ public class BluetoothLeService extends Service {
 			 * Sending lots of data is possible, but usually ends up being less efficient than classic
 			 * Bluetooth when trying to achieve maximum throughput.
 			 */
-			System.out.println("onCharacteristicChanged -------------------> changed");
+			LoggerUtils.d(TAG,"onCharacteristicChanged -------------------> changed");
 			//notify 会回调用此方法
 			broadcastNotifyUpdate(characteristic);
 		}
@@ -536,9 +536,9 @@ public class BluetoothLeService extends Service {
 		@Override
 		public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
 			//            super.onMtuChanged(gatt, mtu, status);
-			System.out.println("onMtuChanged-------------------->size:" + mtu);
+			LoggerUtils.d(TAG,"onMtuChanged-------------------->size:" + mtu);
 			if (status == BluetoothGatt.GATT_SUCCESS) {
-				System.out.println("onMtuChanged-------------------->设置成功");
+				LoggerUtils.d(TAG,"onMtuChanged-------------------->设置成功");
 			}
 		}
 	};
@@ -779,7 +779,7 @@ public class BluetoothLeService extends Service {
 				return (Boolean) localMethod.invoke(localBluetoothGatt);
 			}
 		} catch (Exception localException) {
-			System.out.println("An exception occured while refreshing device");
+			LoggerUtils.d(TAG,"An exception occured while refreshing device");
 		}
 		return false;
 	}
@@ -1030,7 +1030,7 @@ public class BluetoothLeService extends Service {
 	public void onCreate() {
 		// Initializing the service
 		if (!initialize()) {
-			System.out.println("Service not initialized");
+			LoggerUtils.d(TAG,"Service not initialized");
 		}
 	}
 
