@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.xiaan.liangyuan.liangyuanapp.R;
-import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
+import com.xiaan.liangyuan.liangyuanapp.LoggerUtils;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();

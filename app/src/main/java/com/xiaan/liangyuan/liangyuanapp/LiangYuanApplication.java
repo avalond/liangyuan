@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 import com.xiaan.liangyuan.liangyuanapp.model.LiangYuanService;
-import com.xiaan.liangyuan.liangyuanapp.utils.LoggerUtils;
 import io.realm.Realm;
 import java.util.ArrayList;
 import java.util.List;

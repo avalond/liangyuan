@@ -1,4 +1,4 @@
-package com.xiaan.liangyuan.liangyuanapp.utils;
+package com.xiaan.liangyuan.liangyuanapp;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.xiaan.liangyuan.liangyuanapp.BuildConfig;
