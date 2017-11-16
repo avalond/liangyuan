@@ -3,7 +3,8 @@
     package="com.xiaan.liangyuan.liangyuanapp">
 
     <uses-permission android:name="android.permission.BLUETOOTH"/>
-    
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
         android:name=".LiangYuanApplication"
@@ -20,6 +21,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".BlueToothLeService.BluetoothLeService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".ServicesActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_services"
+            android:theme="@style/AppTheme.TransparentAct"/>
+
+        <activity android:name=".CharacteristicsActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_characteritics"
+            android:theme="@style/AppTheme.TransparentAct"/>
+
+        <activity android:name=".GattDetailActivity"
+            android:screenOrientation="portrait"
+            android:label=""
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.TransparentAct"/>
     </application>
 
 </manifest>

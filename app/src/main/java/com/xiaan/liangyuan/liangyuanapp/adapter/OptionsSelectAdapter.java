@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.xiaan.liangyuan.liangyuanapp.R;
 import com.xiaan.liangyuan.liangyuanapp.bean.Option;
 import java.util.List;
@@ -69,13 +67,12 @@ public class OptionsSelectAdapter extends RecyclerView.Adapter<RecyclerView.View
 
 
 	public class OptionHolder extends RecyclerView.ViewHolder {
-		@Bind(R.id.btn_option_select)
 		Button btnOption;
 
 
 		public OptionHolder(View view) {
 			super(view);
-			ButterKnife.bind(this, view);
+			btnOption = view.findViewById(R.id.btn_option);
 		}
 	}
 
