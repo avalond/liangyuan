@@ -1,83 +1,52 @@
 package com.xiaan.liangyuan.liangyuanapp;
 
+import android.app.Application;
 import android.bluetooth.BluetoothGattCharacteristic;
-import android.content.Context;
-import android.support.multidex.MultiDexApplication;
-import com.xiaan.liangyuan.liangyuanapp.model.LiangYuanService;
-import io.realm.Realm;
+import com.xiaan.liangyuan.liangyuanapp.bean.MService;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by kevin.
+ * Created by USR_LJQ on 2015-11-17.
  */
+public class LiangYuanApplication extends Application {
 
-public class LiangYuanApplication extends MultiDexApplication {
-	private static final String TAG = LiangYuanApplication.class.getSimpleName();
+    public enum SERVICE_TYPE{
+        TYPE_USR_DEBUG,TYPE_NUMBER,TYPE_STR,TYPE_OTHER;
+    }
 
-	public static Context mContext;
-	private String versionName;
-	private int versionCode;
+    private final List<MService> services = new ArrayList<>();
+    private final List<BluetoothGattCharacteristic> characteristics = new ArrayList<>();
 
-	//Represents a Bluetooth GATT Characteristic
-	//表示蓝牙GATT特性
-	private BluetoothGattCharacteristic mBluetoothGattCharacteristic;
+    private BluetoothGattCharacteristic characteristic;
 
+    public List<MService> getServices() {
+        return services;
+    }
 
-	public static Context getContext() {
-		return mContext;
-	}
+    public static SERVICE_TYPE serviceType ;
 
-
-	private List<LiangYuanService> mLiangYuanServicesList;
-	private List<BluetoothGattCharacteristic> mBluetoothGattCharacteristicsList;
-
-
-	public List<BluetoothGattCharacteristic> getBluetoothGattCharacteristics() {
-		return mBluetoothGattCharacteristicsList;
-	}
+    public void setServices(List<MService> services) {
+        this.services.clear();
+        this.services.addAll(services);
+    }
 
 
-	//set servers
-	public void setServers(List<LiangYuanService> serviceList) {
-		this.mLiangYuanServicesList.clear();
-		this.mLiangYuanServicesList.addAll(serviceList);
-	}
+    public List<BluetoothGattCharacteristic> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(List<BluetoothGattCharacteristic> characteristics) {
+        this.characteristics.clear();
+        this.characteristics.addAll(characteristics);
+    }
 
 
-	//set Bluetooth Gatt Characteristic list
-	public void setBluetoothGattCharacteristic(List<BluetoothGattCharacteristic> characteristicsList) {
-		this.mBluetoothGattCharacteristicsList.clear();
-		this.mBluetoothGattCharacteristicsList.addAll(characteristicsList);
-	}
+    public void setCharacteristic(BluetoothGattCharacteristic characteristic) {
+        this.characteristic = characteristic;
+    }
 
-
-	// set Bluetooth Gatt Characteristic
-	public void setBluetoothGattCharacteristic(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-		this.mBluetoothGattCharacteristic = bluetoothGattCharacteristic;
-	}
-
-
-	// get  Bluetooth Gatt Characteristic
-	public BluetoothGattCharacteristic getBluetoothGattCharacteristic() {
-		return mBluetoothGattCharacteristic;
-	}
-
-
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		LoggerUtils.i(TAG, "application is on created");
-		mContext = getApplicationContext();
-		versionCode = 0;
-		versionName = null;
-		//
-		mLiangYuanServicesList = new ArrayList<>();
-		//
-		mBluetoothGattCharacteristicsList = new ArrayList<>();
-
-		// database
-		Realm.init(this);
-	}
-
+    public BluetoothGattCharacteristic getCharacteristic() {
+        return characteristic;
+    }
 }

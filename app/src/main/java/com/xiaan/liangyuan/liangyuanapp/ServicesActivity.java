@@ -16,17 +16,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.usr.usrsimplebleassistent.Utils.AnimateUtils;
-import com.usr.usrsimplebleassistent.Utils.GattAttributes;
-import com.usr.usrsimplebleassistent.Utils.Utils;
-import com.usr.usrsimplebleassistent.adapter.ServicesAdapter;
-import com.usr.usrsimplebleassistent.bean.MService;
-
+import butterknife.Bind;
+import com.xiaan.liangyuan.liangyuanapp.Utils.AnimateUtils;
+import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
+import com.xiaan.liangyuan.liangyuanapp.Utils.Utils;
+import com.xiaan.liangyuan.liangyuanapp.adapter.ServicesAdapter;
+import com.xiaan.liangyuan.liangyuanapp.bean.MService;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
 
 public class ServicesActivity extends MyBaseActivity {
     private final List<MService> list = new ArrayList<>();
@@ -48,7 +45,7 @@ public class ServicesActivity extends MyBaseActivity {
     TextView tvServiceCount;
 
     private ServicesAdapter adapter;
-    private MyApplication myApplication;
+    private LiangYuanApplication myApplication;
 
 
     @Override
@@ -56,7 +53,7 @@ public class ServicesActivity extends MyBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
         bindToolBar();
-        myApplication =  (MyApplication) getApplication();
+        myApplication =  (LiangYuanApplication) getApplication();
         List<MService> services =myApplication.getServices();
         list.addAll(services);
         adapter = new ServicesAdapter(this, list);
@@ -83,13 +80,13 @@ public class ServicesActivity extends MyBaseActivity {
                     intent.putExtra("is_usr_service", true);
 
                     //这里为了方便暂时直接用Application serviceType 来标记当前的服务，应该是和上面的代码合并
-                    MyApplication.serviceType = MyApplication.SERVICE_TYPE.TYPE_USR_DEBUG;
+                    LiangYuanApplication.serviceType = LiangYuanApplication.SERVICE_TYPE.TYPE_USR_DEBUG;
                 }
                 else if(service.getUuid().toString().equals(GattAttributes.BATTERY_SERVICE) ||
                         service.getUuid().toString().equals(GattAttributes.RGB_LED_SERVICE_CUSTOM)){
-                    MyApplication.serviceType = MyApplication.SERVICE_TYPE.TYPE_NUMBER;
+                    LiangYuanApplication.serviceType = LiangYuanApplication.SERVICE_TYPE.TYPE_NUMBER;
                 }else {
-                    MyApplication.serviceType = MyApplication.SERVICE_TYPE.TYPE_OTHER;
+                    LiangYuanApplication.serviceType = LiangYuanApplication.SERVICE_TYPE.TYPE_OTHER;
                 }
 
                 startActivity(intent);

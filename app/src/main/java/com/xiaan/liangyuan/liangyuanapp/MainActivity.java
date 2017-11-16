@@ -495,7 +495,7 @@ public class MainActivity extends MyBaseActivity {
             list.add(mService);
         }
 
-        ((MyApplication) getApplication()).setServices(list);
+        ((LiangYuanApplication) getApplication()).setServices(list);
     }
 
 

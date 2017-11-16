@@ -29,25 +29,22 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.usr.usrsimplebleassistent.BlueToothLeService.BluetoothLeService;
-import com.usr.usrsimplebleassistent.Utils.AnimateUtils;
-import com.usr.usrsimplebleassistent.Utils.Constants;
-import com.usr.usrsimplebleassistent.Utils.GattAttributes;
-import com.usr.usrsimplebleassistent.Utils.Utils;
-import com.usr.usrsimplebleassistent.adapter.MessagesAdapter;
-import com.usr.usrsimplebleassistent.adapter.OptionsSelectAdapter;
-import com.usr.usrsimplebleassistent.bean.Message;
-import com.usr.usrsimplebleassistent.bean.Option;
-import com.usr.usrsimplebleassistent.views.OptionsMenuManager;
-
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.xiaan.liangyuan.liangyuanapp.BlueToothLeService.BluetoothLeService;
+import com.xiaan.liangyuan.liangyuanapp.Utils.AnimateUtils;
+import com.xiaan.liangyuan.liangyuanapp.Utils.Constants;
+import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
+import com.xiaan.liangyuan.liangyuanapp.Utils.Utils;
+import com.xiaan.liangyuan.liangyuanapp.adapter.MessagesAdapter;
+import com.xiaan.liangyuan.liangyuanapp.adapter.OptionsSelectAdapter;
+import com.xiaan.liangyuan.liangyuanapp.bean.Message;
+import com.xiaan.liangyuan.liangyuanapp.bean.Option;
+import com.xiaan.liangyuan.liangyuanapp.views.OptionsMenuManager;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class GattDetailActivity extends MyBaseActivity {
@@ -86,7 +83,7 @@ public class GattDetailActivity extends MyBaseActivity {
     private BluetoothGattCharacteristic writeCharacteristic;
     private BluetoothGattCharacteristic indicateCharacteristic;
 
-    private MyApplication myApplication;
+    private LiangYuanApplication myApplication;
     private String properties;
     private OptionsMenuManager optionsMenuManager;
 
@@ -128,7 +125,7 @@ public class GattDetailActivity extends MyBaseActivity {
                                 notifyAdapter(msg);
                             }else if (uuidRequired.equalsIgnoreCase(receivedUUID)) {
                                 byte[] array = intent.getByteArrayExtra(Constants.EXTRA_BYTE_VALUE);
-                                Message msg = new Message(Message.MESSAGE_TYPE.RECEIVE,formatMsgContent(array,MyApplication.serviceType));
+                                Message msg = new Message(Message.MESSAGE_TYPE.RECEIVE,formatMsgContent(array, LiangYuanApplication.serviceType));
                                 notifyAdapter(msg);
                             }
                         }
@@ -203,7 +200,7 @@ public class GattDetailActivity extends MyBaseActivity {
         setContentView(R.layout.activity_gatt_detail);
         ButterKnife.bind(this);
         bindToolBar();
-        myApplication = (MyApplication) getApplication();
+        myApplication = (LiangYuanApplication) getApplication();
         optionsMenuManager = OptionsMenuManager.getInstance();
 
 
@@ -266,7 +263,7 @@ public class GattDetailActivity extends MyBaseActivity {
         BluetoothGattCharacteristic characteristic = myApplication.getCharacteristic();
         if (characteristic.getUuid().toString().equals(GattAttributes.USR_SERVICE)){
             isDebugMode = true;
-            List<BluetoothGattCharacteristic> characteristics = ((MyApplication)getApplication()).getCharacteristics();
+            List<BluetoothGattCharacteristic> characteristics = ((LiangYuanApplication)getApplication()).getCharacteristics();
 
             for (BluetoothGattCharacteristic c :characteristics){
                 if (Utils.getPorperties(this,c).equals("Notify")){
@@ -301,7 +298,7 @@ public class GattDetailActivity extends MyBaseActivity {
 
         if (property.length == 1) {
             btnOptions.setVisibility(View.GONE);
-            Option option = new Option(properties.trim(),Option.OPTIONS_MAP.get(properties.trim()));
+            Option option = new Option(properties.trim(), Option.OPTIONS_MAP.get(properties.trim()));
             setOption(option);
         } else {
             for (int i=0;i<property.length;i++){
@@ -615,7 +612,7 @@ public class GattDetailActivity extends MyBaseActivity {
     }
 
 
-    private String formatMsgContent(byte[] data,MyApplication.SERVICE_TYPE type){
+    private String formatMsgContent(byte[] data,LiangYuanApplication.SERVICE_TYPE type){
         String res = "HEX:"+Utils.ByteArraytoHex(data);
         switch (type){
             case TYPE_STR:

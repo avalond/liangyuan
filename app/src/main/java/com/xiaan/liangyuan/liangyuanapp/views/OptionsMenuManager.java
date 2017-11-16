@@ -7,10 +7,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
-
-import com.usr.usrsimplebleassistent.adapter.OptionsSelectAdapter;
-import com.usr.usrsimplebleassistent.bean.Option;
-
+import com.xiaan.liangyuan.liangyuanapp.adapter.OptionsSelectAdapter;
 import java.util.List;
 
 /**

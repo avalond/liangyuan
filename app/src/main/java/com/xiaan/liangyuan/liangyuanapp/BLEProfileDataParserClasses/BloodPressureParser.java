@@ -34,12 +34,8 @@ package com.xiaan.liangyuan.liangyuanapp.BLEProfileDataParserClasses;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
-
-import com.usr.usrsimplebleassistent.R;
-import com.usr.usrsimplebleassistent.Utils.Constants;
-
-import java.util.logging.Logger;
-
+import com.xiaan.liangyuan.liangyuanapp.R;
+import com.xiaan.liangyuan.liangyuanapp.Utils.Constants;
 
 /**
  * Class used for parsing Blood pressure related information

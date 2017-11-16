@@ -33,9 +33,7 @@
 package com.xiaan.liangyuan.liangyuanapp.BLEProfileDataParserClasses;
 
 import android.bluetooth.BluetoothGattCharacteristic;
-
-import com.usr.usrsimplebleassistent.DataModelClasses.GlucoseDataModel;
-
+import com.xiaan.liangyuan.liangyuanapp.DataModelClasses.GlucoseDataModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;

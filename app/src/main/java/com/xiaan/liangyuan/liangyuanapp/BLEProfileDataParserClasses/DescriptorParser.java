@@ -32,11 +32,9 @@
 package com.xiaan.liangyuan.liangyuanapp.BLEProfileDataParserClasses;
 
 import android.bluetooth.BluetoothGattDescriptor;
-
-import com.usr.usrsimplebleassistent.Utils.Constants;
-import com.usr.usrsimplebleassistent.Utils.GattAttributes;
-import com.usr.usrsimplebleassistent.Utils.ReportAttributes;
-
+import com.xiaan.liangyuan.liangyuanapp.Utils.Constants;
+import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
+import com.xiaan.liangyuan.liangyuanapp.Utils.ReportAttributes;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;

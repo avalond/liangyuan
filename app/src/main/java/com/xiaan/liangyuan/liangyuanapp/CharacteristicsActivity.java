@@ -10,15 +10,12 @@ import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import com.usr.usrsimplebleassistent.Utils.GattAttributes;
-import com.usr.usrsimplebleassistent.adapter.CharacteristicsAdapter;
-
+import butterknife.Bind;
+import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
+import com.xiaan.liangyuan.liangyuanapp.adapter.CharacteristicsAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import butterknife.Bind;
 
 public class CharacteristicsActivity extends MyBaseActivity {
     @Bind(R.id.view_filter)
@@ -31,7 +28,7 @@ public class CharacteristicsActivity extends MyBaseActivity {
     private final List<BluetoothGattCharacteristic> list = new ArrayList<>();
     private CharacteristicsAdapter adapter;
 
-    private MyApplication myApplication;
+    private LiangYuanApplication myApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +36,9 @@ public class CharacteristicsActivity extends MyBaseActivity {
         setContentView(R.layout.activity_characteristics);
         bindToolBar();
 
-        myApplication = (MyApplication) getApplication();
+        myApplication = (LiangYuanApplication) getApplication();
 
-        List<BluetoothGattCharacteristic> characteristics = ((MyApplication)getApplication()).getCharacteristics();
+        List<BluetoothGattCharacteristic> characteristics = ((LiangYuanApplication)getApplication()).getCharacteristics();
         list.addAll(characteristics);
 
         //we create a virtual BluetoothGattCharacteristic just for debug
