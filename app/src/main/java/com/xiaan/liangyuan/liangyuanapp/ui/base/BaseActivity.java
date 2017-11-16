@@ -1,14 +1,16 @@
-package com.xiaan.liangyuan.liangyuanapp;
+package com.xiaan.liangyuan.liangyuanapp.ui.base;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import com.xiaan.liangyuan.liangyuanapp.R;
+import com.xiaan.liangyuan.liangyuanapp.Utils.LoggerUtils;
 
-public class MyBaseActivity extends AppCompatActivity {
-	Toolbar toolbar;
+public class BaseActivity extends AppCompatActivity {
+	private final String TAG = BaseActivity.class.getSimpleName();
+	public Toolbar toolbar;
 
 
 	@Override
@@ -33,17 +35,10 @@ public class MyBaseActivity extends AppCompatActivity {
 
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu_usr, menu);
-		return true;
-	}
-
-
-	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				System.out.println("--------------->home");
+				LoggerUtils.d(TAG, "--------------->home");
 				menuHomeClick();
 				break;
 		}

@@ -1,4 +1,4 @@
-package com.xiaan.liangyuan.liangyuanapp;
+package com.xiaan.liangyuan.liangyuanapp.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -33,6 +33,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xiaan.liangyuan.liangyuanapp.BlueToothLeService.BluetoothLeService;
+import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
+import com.xiaan.liangyuan.liangyuanapp.R;
 import com.xiaan.liangyuan.liangyuanapp.Utils.AnimateUtils;
 import com.xiaan.liangyuan.liangyuanapp.Utils.Constants;
 import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
@@ -42,12 +44,13 @@ import com.xiaan.liangyuan.liangyuanapp.adapter.MessagesAdapter;
 import com.xiaan.liangyuan.liangyuanapp.adapter.OptionsSelectAdapter;
 import com.xiaan.liangyuan.liangyuanapp.bean.Message;
 import com.xiaan.liangyuan.liangyuanapp.bean.Option;
+import com.xiaan.liangyuan.liangyuanapp.ui.base.BaseActivity;
 import com.xiaan.liangyuan.liangyuanapp.views.OptionsMenuManager;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GattDetailActivity extends MyBaseActivity implements View.OnClickListener {
+public class GattDetailActivity extends BaseActivity implements View.OnClickListener {
 
 	private static final String TAG = GattDetailActivity.class.getSimpleName();
 	ImageButton btnOptions;
@@ -157,7 +160,7 @@ public class GattDetailActivity extends MyBaseActivity implements View.OnClickLi
 		}
 
 		int sdkInt = Build.VERSION.SDK_INT;
-		System.out.println("sdkInt------------>" + sdkInt);
+		LoggerUtils.d(TAG,"sdkInt------------>" + sdkInt);
 		if (sdkInt >= 21) {
 			//设置最大发包、收包的长度为512个字节
 			if (BluetoothLeService.requestMtu(512)) {
@@ -240,7 +243,7 @@ public class GattDetailActivity extends MyBaseActivity implements View.OnClickLi
 				if (extras.containsKey(Constants.EXTRA_CHARACTERISTIC_ERROR_MESSAGE)) {
 					String errorMessage = extras.
 							getString(Constants.EXTRA_CHARACTERISTIC_ERROR_MESSAGE);
-					System.out.println("GattDetailActivity---------------------->err:" + errorMessage);
+					LoggerUtils.d(TAG,"GattDetailActivity---------------------->err:" + errorMessage);
 					showDialog(errorMessage);
 				}
 
@@ -486,7 +489,7 @@ public class GattDetailActivity extends MyBaseActivity implements View.OnClickLi
 				writeCharacteristic(writeCharacteristic, array);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-				LoggerUtils.d(TAG, "--------------------->write text exception");
+				LoggerUtils.d(TAG, "---------------------> write text exception");
 				return;
 			}
 

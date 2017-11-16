@@ -1,4 +1,4 @@
-package com.xiaan.liangyuan.liangyuanapp;
+package com.xiaan.liangyuan.liangyuanapp.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,15 +16,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
+import com.xiaan.liangyuan.liangyuanapp.R;
 import com.xiaan.liangyuan.liangyuanapp.Utils.AnimateUtils;
 import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
+import com.xiaan.liangyuan.liangyuanapp.Utils.LoggerUtils;
 import com.xiaan.liangyuan.liangyuanapp.Utils.Utils;
 import com.xiaan.liangyuan.liangyuanapp.adapter.ServicesAdapter;
 import com.xiaan.liangyuan.liangyuanapp.bean.MService;
+import com.xiaan.liangyuan.liangyuanapp.ui.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicesActivity extends MyBaseActivity {
+public class ServicesActivity extends BaseActivity {
+	private final String TAG=ServicesActivity.class.getSimpleName();
 	private final List<MService> list = new ArrayList<>();
 	private RelativeLayout rlTop;
 	private View filterView;
@@ -70,7 +75,7 @@ public class ServicesActivity extends MyBaseActivity {
 				MService mService = list.get(position);
 				BluetoothGattService service = mService.getService();
 
-				System.out.println("service---------------->" + service.getUuid().toString());
+				LoggerUtils.d(TAG,"service---------------->" + service.getUuid().toString());
 
 				myApplication.setCharacteristics(service.getCharacteristics());
 

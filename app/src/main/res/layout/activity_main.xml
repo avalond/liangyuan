@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.usr.usrsimplebleassistent.MainActivity">
+    >
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -33,13 +33,9 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
             </android.support.v7.widget.Toolbar>
 
-
         </android.support.design.widget.CollapsingToolbarLayout>
 
-
     </android.support.design.widget.AppBarLayout>
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -51,28 +47,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@drawable/shape_shade_bottom"/>
     </RelativeLayout>
 
-
-    <com.usr.usrsimplebleassistent.views.RevealBackgroundView
+    <com.xiaan.liangyuan.liangyuanapp.views.RevealBackgroundView
         android:id="@+id/reveal_background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:visibility="gone"/>
 
-    <com.usr.usrsimplebleassistent.views.RevealSearchView
+    <com.xiaan.liangyuan.liangyuanapp.views.RevealSearchView
         android:id="@+id/realsearchiew"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:visibility="gone"/>
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_search"
@@ -90,6 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
+
         <TextView
             android:id="@+id/tv_searching"
             android:layout_width="wrap_content"
@@ -101,17 +97,15 @@
             android:layout_marginBottom="220dp"
             android:layout_alignParentBottom="true"/>
 
-
         <TextView
             android:id="@+id/tv_search_device_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="180dp"
             android:textColor="@android:color/white"
             android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textSize="20sp"/>
-
 
         <Button
             android:id="@+id/btn_stop_searching"

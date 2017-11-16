@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+
+        <activity android:name=".ui.MainActivity"
+            android:theme="@style/AppTheme.TransparentAct"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,17 +29,17 @@
             android:enabled="true" />
 
         <activity
-            android:name=".ServicesActivity"
+            android:name=".ui.ServicesActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_services"
             android:theme="@style/AppTheme.TransparentAct"/>
 
-        <activity android:name=".CharacteristicsActivity"
+        <activity android:name=".ui.CharacteristicsActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_characteritics"
             android:theme="@style/AppTheme.TransparentAct"/>
 
-        <activity android:name=".GattDetailActivity"
+        <activity android:name=".ui.GattDetailActivity"
             android:screenOrientation="portrait"
             android:label=""
             android:windowSoftInputMode="stateHidden"

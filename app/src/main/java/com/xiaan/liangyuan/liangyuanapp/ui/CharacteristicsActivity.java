@@ -1,4 +1,4 @@
-package com.xiaan.liangyuan.liangyuanapp;
+package com.xiaan.liangyuan.liangyuanapp.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -10,16 +10,19 @@ import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
+import com.xiaan.liangyuan.liangyuanapp.R;
 import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
 import com.xiaan.liangyuan.liangyuanapp.adapter.CharacteristicsAdapter;
+import com.xiaan.liangyuan.liangyuanapp.ui.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CharacteristicsActivity extends MyBaseActivity {
-	View filterView;
-	ListView lvCharacteristics;
-	View viewShadow;
+public class CharacteristicsActivity extends BaseActivity {
+	private View filterView;
+	private ListView lvCharacteristics;
+	private View viewShadow;
 
 	private final List<BluetoothGattCharacteristic> list = new ArrayList<>();
 	private CharacteristicsAdapter adapter;

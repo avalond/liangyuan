@@ -28,7 +28,6 @@ android {
                 keyPassword keystoreProperties['keyPassword']
                 storeFile file(keystoreProperties['storeFile'])
                 storePassword keystoreProperties['storePassword']
-                v2SigningEnabled true
             }
         }
     }
@@ -44,7 +43,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.config
+           // signingConfig signingConfigs.config
             minifyEnabled true
             multiDexEnabled true
             shrinkResources true
