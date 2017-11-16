@@ -1,8 +1,6 @@
 package com.xiaan.liangyuan.liangyuanapp.bean;
 
-/**
- * Created by Administrator on 2015-07-28.
- */
+
 public class Message {
     private String content;
     private MESSAGE_TYPE type;

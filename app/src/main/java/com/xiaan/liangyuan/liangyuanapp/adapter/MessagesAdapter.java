@@ -7,18 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.usr.usrsimplebleassistent.R;
-import com.usr.usrsimplebleassistent.bean.Message;
-
-import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.xiaan.liangyuan.liangyuanapp.R;
+import com.xiaan.liangyuan.liangyuanapp.bean.Message;
+import java.util.List;
 
-/**
- * Created by Administrator on 2015-07-28.
- */
+
 public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int TYPE_LEFT = 0 ;
     public static final int TYPE_RIGHT = 1;

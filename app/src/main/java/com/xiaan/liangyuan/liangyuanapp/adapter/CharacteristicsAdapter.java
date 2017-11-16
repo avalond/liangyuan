@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.usr.usrsimplebleassistent.R;
-import com.usr.usrsimplebleassistent.Utils.GattAttributes;
-import com.usr.usrsimplebleassistent.Utils.Utils;
-
-import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.xiaan.liangyuan.liangyuanapp.R;
+import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
+import com.xiaan.liangyuan.liangyuanapp.Utils.Utils;
+import java.util.List;
 
 
 public class CharacteristicsAdapter extends BaseAdapter {

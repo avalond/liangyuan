@@ -7,15 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.usr.usrsimplebleassistent.R;
-import com.usr.usrsimplebleassistent.bean.MService;
-
+import com.xiaan.liangyuan.liangyuanapp.R;
+import com.xiaan.liangyuan.liangyuanapp.bean.MService;
 import java.util.List;
 
-/**
- * Created by Administrator on 2015-11-17.
- */
+
 public class ServicesAdapter extends BaseAdapter {
     private Context context;
     private List<MService> list;
