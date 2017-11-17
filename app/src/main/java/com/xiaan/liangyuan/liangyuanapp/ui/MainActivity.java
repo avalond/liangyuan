@@ -2,6 +2,7 @@ package com.xiaan.liangyuan.liangyuanapp.ui;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
@@ -21,7 +22,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
@@ -32,7 +32,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.xiaan.liangyuan.liangyuanapp.BlueToothLeService.BluetoothLeService;
 import com.xiaan.liangyuan.liangyuanapp.LiangYuanApplication;
-import com.xiaan.liangyuan.liangyuanapp.ui.base.BaseActivity;
 import com.xiaan.liangyuan.liangyuanapp.R;
 import com.xiaan.liangyuan.liangyuanapp.Utils.AnimateUtils;
 import com.xiaan.liangyuan.liangyuanapp.Utils.GattAttributes;
@@ -41,6 +40,7 @@ import com.xiaan.liangyuan.liangyuanapp.Utils.Utils;
 import com.xiaan.liangyuan.liangyuanapp.adapter.DevicesAdapter;
 import com.xiaan.liangyuan.liangyuanapp.bean.MDevice;
 import com.xiaan.liangyuan.liangyuanapp.bean.MService;
+import com.xiaan.liangyuan.liangyuanapp.ui.base.BaseActivity;
 import com.xiaan.liangyuan.liangyuanapp.views.RevealBackgroundView;
 import com.xiaan.liangyuan.liangyuanapp.views.RevealSearchView;
 import java.util.ArrayList;
@@ -469,7 +469,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			} else if (action.equals(BluetoothLeService.ACTION_GATT_DISCONNECTED)) {
 				//progressDialog.dismiss();
 				//connect break (连接断开)
-				showDialog(getString(R.string.conn_disconnected_home));
+			LoggerUtils.d(TAG,"------------> Connect disconnect,please reconnect");
+//				showDialog(getString(R.string.conn_disconnected_home));
 			}
 
 		}
@@ -518,7 +519,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 	private void showDialog(String info) {
 		final AlertDialog.Builder normalDialog =
-				new AlertDialog.Builder(getApplicationContext());
+				new AlertDialog.Builder(this);
 
 		normalDialog.setTitle(getString(R.string.alert));
 		normalDialog.setMessage(info);
