@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LiangYuan</string>
     <string name="app_name_debug">LiangYuan-Debug</string>
-    <string name="devices">亮源 BLE 设备</string>
+    <string name="devices">亮源蓝牙设备</string>
     <string name="share_ex">Can\'t find share component to share</string>
     <string name="menu_hex_send">HEX Send</string>
     <string name="menu_asscii_send">ASSCII Send</string>

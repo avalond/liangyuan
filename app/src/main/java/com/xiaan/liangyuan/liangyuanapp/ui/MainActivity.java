@@ -120,7 +120,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		mStopSeacheBt.setOnClickListener(this);
 
 		bindToolBar();
-		toolbar.setNavigationIcon(R.mipmap.ic_bluetooth_disabled_white_48dp);
+		//toolbar.setNavigationIcon(R.mipmap.ic_bluetooth_disabled_white_48dp);
+		setSupportActionBar(toolbar);
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setDisplayShowTitleEnabled(false);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+		}
 		collapsingToolbarLayout.setTitle(getString(R.string.devices));
 
 		hander = new Handler();
